@@ -23,7 +23,7 @@ public class Slot : MonoBehaviour
     {
         foreach(Transform child in transform)
         {
-            GameObject.Destroy(child.gameObject); //mata uma criaça no pais do UI
+            GameObject.Destroy(child.gameObject); //mata uma criaça no país do UI
         }
     }
 }
