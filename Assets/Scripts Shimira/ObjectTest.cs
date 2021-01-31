@@ -9,6 +9,8 @@ public class ObjectTest : MonoBehaviour
     public void Use()
     {
         Debug.Log("Funcionou, eu espero");
+        gameObject.GetComponent<Inventory>();
+        
         Destroy(gameObject);
     }
 }

@@ -6,34 +6,50 @@ public class PickUp : MonoBehaviour
 {
     private Inventory inventory;
     public GameObject itemButton;
+    private List<Item.ItemType> itemList; //as vezes eu odeio programar (lista de itens interagiveis)
 
     // Start is called before the first frame update
     void Start()
     {
         inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>(); //determina o que é o Inventário
+        itemList = new List<Item.ItemType>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddItem(Item.ItemType itemType)
     {
+        Debug.Log("Negação: " + itemType);
+        itemList.Add(itemType);
+    }
+    public void RemoveItem(Item.ItemType itemType)
+    {
+        itemList.Remove(itemType);
+    }
+    public bool ContainsItem(Item.ItemType itemType)
+    {
+        return itemList.Contains(itemType);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+                                                             //meu senhor amado
+        Item item = collision.GetComponent<Item>();
+        if (item != null)
+        {
+            //item pode entrar no inventário, A M É M
+            AddItem(item.GetItemType());
+            Destroy(item.gameObject);
+        }
         
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))                                                     //magia pra determinar se um slot do inventário não está cheio
-        {                                                                                   //e pode se por um item nele
-            for (int i = 0; i < inventory.slots.Length; i++)                                //não questione
+        ItemDoor itemDoor = collision.GetComponent<ItemDoor>();
+        if (itemDoor != null)
+        {
+            if (GetComponent<PickUp>().ContainsItem(itemDoor.GetItemType()))
             {
-                if (inventory.isFull[i] == false)
-                {
-                    //item pode entrar no inventário
-                    inventory.isFull[i] = true;
-                    Instantiate(itemButton, inventory.slots[i].transform, false);
-                    Destroy(gameObject);
-                    break;
-                }
+                //tem o item necessário para realizar a interação
+                GetComponent<PickUp>().RemoveItem(itemDoor.GetItemType());  ///o abismo sempre olha de volta
+                itemDoor.OpenDoor();
             }
         }
+
     }
 }
