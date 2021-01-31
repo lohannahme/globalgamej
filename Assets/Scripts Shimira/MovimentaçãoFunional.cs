@@ -6,6 +6,8 @@ public class MovimentaçãoFunional : MonoBehaviour //dá pra melhorar bastante 
 {
     public float speed = 1; //velocidade
     private Rigidbody2D rd2d;
+    public float i;
+  
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +16,7 @@ public class MovimentaçãoFunional : MonoBehaviour //dá pra melhorar bastante 
 
         float Vertical = Input.GetAxis("Vertical");
 
+      
     }
 
     // Update is called once per frame
@@ -25,6 +28,5 @@ public class MovimentaçãoFunional : MonoBehaviour //dá pra melhorar bastante 
         {
             rd2d.velocity = Vector2.up * speed;
         }
-
     }
 }
