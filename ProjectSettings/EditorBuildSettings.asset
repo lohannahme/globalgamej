@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shimira.unity
     guid: 24ee72d781ecfe44e90ed6ddddff80fc
+  - enabled: 1
+    path: Assets/Scenes/SherlockHolmes.unity
+    guid: dfdac52df173d6a46a3f92e2dca8c25f
   m_configObjects: {}
