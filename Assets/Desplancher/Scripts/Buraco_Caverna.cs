@@ -4,10 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+
+
 public class Buraco_Caverna : MonoBehaviour
 {
     public Text txtCaverna;
-   
+    public string sceneName;
+    
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(gameObject.name);
@@ -17,8 +21,18 @@ public class Buraco_Caverna : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.E))
         {
-            SceneManager.LoadScene(3);
-            Debug.Log("APERTOU");
+            if (sceneName == "Shimira")
+            {
+                SceneManager.LoadScene(3);
+                Debug.Log("APERTOU");
+            }
+            else if (sceneName == "Caverna")
+            {
+                SceneManager.LoadScene(1);
+                Debug.Log("APERTOU");
+              
+            }
+
         }
     }
 
@@ -29,8 +43,10 @@ public class Buraco_Caverna : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        Debug.Log(SceneManager.GetActiveScene().name);
+        sceneName = SceneManager.GetActiveScene().name;
 
+   
     }
 
     // Update is called once per frame
