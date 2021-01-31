@@ -6,11 +6,24 @@ public class Lanterna : MonoBehaviour
 {
     public bool lant;
     public SpriteRenderer luz;
+    GameManager hannaputa;
 
     // Start is called before the first frame update
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+      
+            Destroy(gameObject);
+            hannaputa.temLanterna = true;
+        }
+    }
+
     void Start()
     {
-        lant = true;    
+        lant = true;
+        hannaputa = GetComponent<GameManager>();
     }
 
     // Update is called once per frame
