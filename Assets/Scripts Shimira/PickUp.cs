@@ -6,6 +6,7 @@ public class PickUp : MonoBehaviour
 {
     private Inventory inventory;
     public GameObject itemButton;
+    public int i;
     private List<Item.ItemType> itemList; //as vezes eu odeio programar (lista de itens interagiveis)
 
     // Start is called before the first frame update
@@ -35,9 +36,12 @@ public class PickUp : MonoBehaviour
         Item item = collision.GetComponent<Item>();
         if (item != null)
         {
-            //item pode entrar no inventário, A M É M
-            AddItem(item.GetItemType());
-            Destroy(item.gameObject);
+            if (inventory.isFull[i] == false)
+            {
+                //item pode entrar no inventário, A M É M
+                AddItem(item.GetItemType());
+                Destroy(item.gameObject);
+            }
         }
         
         ItemDoor itemDoor = collision.GetComponent<ItemDoor>();
@@ -50,6 +54,5 @@ public class PickUp : MonoBehaviour
                 itemDoor.OpenDoor();
             }
         }
-
     }
 }
