@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!212 &262198815
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -524,7 +524,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Levanta seu Bund\xE3o"
+  m_Text: "F I M\n(Dessa Vers\xE3o)"
 --- !u!222 &2023404891
 CanvasRenderer:
   m_ObjectHideFlags: 0

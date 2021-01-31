@@ -25,5 +25,9 @@ public class Slot : MonoBehaviour
         {
             GameObject.Destroy(child.gameObject); //mata uma criaça no país do UI
         }
+        if (transform.childCount <= 0)
+        {
+            inventory.isFull[i] = false;
+        }
     }
 }

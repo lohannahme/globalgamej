@@ -5,7 +5,6 @@ using UnityEngine;
 public class PickUp : MonoBehaviour
 {
     private Inventory inventory;
-    public GameObject itemButton;
     public int i;
     private List<Item.ItemType> itemList; //as vezes eu odeio programar (lista de itens interagiveis)
 
@@ -34,12 +33,14 @@ public class PickUp : MonoBehaviour
     {
                                                              //meu senhor amado
         Item item = collision.GetComponent<Item>();
+        Item UI = collision.GetComponent<Item>();
         if (item != null)
         {
             if (inventory.isFull[i] == false)
             {
                 //item pode entrar no inventário, A M É M
                 AddItem(item.GetItemType());
+                Instantiate(UI.itemButton, inventory.slots[i].transform, false);
                 Destroy(item.gameObject);
             }
         }
@@ -52,6 +53,8 @@ public class PickUp : MonoBehaviour
                 //tem o item necessário para realizar a interação
                 GetComponent<PickUp>().RemoveItem(itemDoor.GetItemType());  ///o abismo sempre olha de volta
                 itemDoor.OpenDoor();
+                //Slot delete = GetComponent<Slot>();
+                //delete.DropItem();
             }
         }
     }

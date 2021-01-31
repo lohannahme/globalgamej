@@ -5,6 +5,8 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     [SerializeField] private ItemType itemType;
+    public GameObject itemButton;
+
     public enum ItemType
     {
         Chave,
